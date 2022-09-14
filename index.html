@@ -304,7 +304,7 @@ NAT转换是什么呢？由于公网地址是有限的，为了节省公网ip资
 <li>运行bin目录下的grafana-server.exe</li>
 <li>在conf文件夹下复制sample.ini文件，重命名为custom.ini，将http_port行取消注释（ini文件中 ‘;’ 即为注释，我们将 ‘;’ 删掉），将端口号改为你想要的端口号</li>
 <li>进入localhost:${http_port}, 初始账户密码均为admin，登陆后按照指引修改密码</li>
-<li>配置数据源，我们选择Prometheus,将URL补全为<a href="http://localhost:9090，DashBoard中import`Prometheus">http://localhost:9090，DashBoard中import`Prometheus</a> 2.0 Stats<code>和</code>Grafana metrics<code>，点击</code>Save &amp; test`,即可配置成功（前提是已经打开了Prometheus)</li>
+<li>配置数据源，我们选择Prometheus,将URL补全为localhost:9090，DashBoard中import<code>Prometheus 2.0 Stats</code> 和 <code>Grafana metrics</code>，点击<code>Save &amp; test</code>,即可配置成功（前提是已经打开了Prometheus)</li>
 <li>之后我们在DashBoard中即可看到图表</li>
 </ul>
 

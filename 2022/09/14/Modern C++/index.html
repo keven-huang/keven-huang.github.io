@@ -20,19 +20,19 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Observability配置Prometheus 在Spring Boot中(pom.xml)引入依赖  1234567891011121314151617181920&lt;dependencies&gt;		&lt;dependency&gt;			&lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;			&lt;artifactId">
+  <meta name="description" content="翱翔四海之外">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Observability搭建">
-<meta property="og:url" content="http://example.com/2022/09/04/Observability/index.html">
+<meta property="og:title" content="C++中">
+<meta property="og:url" content="http://example.com/2022/09/14/Modern%20C++/index.html">
 <meta property="og:site_name" content="丹穴">
-<meta property="og:description" content="Observability配置Prometheus 在Spring Boot中(pom.xml)引入依赖  1234567891011121314151617181920&lt;dependencies&gt;		&lt;dependency&gt;			&lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;			&lt;artifactId">
+<meta property="og:description" content="翱翔四海之外">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-09-04T08:50:54.501Z">
-<meta property="article:modified_time" content="2022-09-14T06:32:38.440Z">
+<meta property="article:published_time" content="2022-09-14T05:23:25.000Z">
+<meta property="article:modified_time" content="2023-02-28T09:22:02.495Z">
 <meta property="article:author" content="凰">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2022/09/04/Observability/">
+<link rel="canonical" href="http://example.com/2022/09/14/Modern%20C++/">
 
 
 <script id="page-configurations">
@@ -45,7 +45,7 @@
   };
 </script>
 
-  <title>Observability搭建 | 丹穴</title>
+  <title>C++中 | 丹穴</title>
   
 
 
@@ -165,7 +165,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/04/Observability/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/14/Modern%20C++/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -178,7 +178,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Observability搭建
+          C++中
         </h1>
 
         <div class="post-meta">
@@ -194,52 +194,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="Observability"><a href="#Observability" class="headerlink" title="Observability"></a>Observability</h2><h4 id="配置Prometheus"><a href="#配置Prometheus" class="headerlink" title="配置Prometheus"></a>配置Prometheus</h4><ul>
-<li>在Spring Boot中(pom.xml)引入依赖</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependencies&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-boot-starter-actuator&lt;/artifactId&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;</span><br><span class="line">			&lt;scope&gt;test&lt;/scope&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;io.micrometer&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;micrometer-registry-prometheus&lt;/artifactId&gt;</span><br><span class="line">			&lt;version&gt;1.1.3&lt;/version&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">	&lt;/dependencies&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-<ul>
-<li>在application.properties中进行配置</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Prometheus configuration</span><br><span class="line">spring.application.name=springboot_prometheus</span><br><span class="line">management.endpoints.web.exposure.include=*		# 暴露的端口（这里所有端口都暴露）</span><br><span class="line"># 该Spring Boot程序上报server的metrics中都会带有这一tag</span><br><span class="line">management.metrics.tags.application=$&#123;spring.application.name&#125;	</span><br></pre></td></tr></table></figure>
-
-
-
-<ul>
-<li>在BackendApplication（主进程）中加入代码</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Bean</span><br><span class="line">    MeterRegistryCustomizer&lt;MeterRegistry&gt; configurer(</span><br><span class="line">            @Value(&quot;$&#123;spring.application.name&#125;&quot;) String applicationName) &#123;</span><br><span class="line">        return (registry) -&gt; registry.config().commonTags(&quot;application&quot;, applicationName);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<ul>
-<li><p><a target="_blank" rel="noopener" href="https://prometheus.io/download/">下载Prometheus</a></p>
-</li>
-<li><p>更改Prometheus目录下的Prometheus.yml, 在最后一行之后加入代码</p>
-</li>
-</ul>
-<blockquote>
-<p>这代表Prometheus会抓取该接口的数据（这正是我们Spring Boot中输出的信息）</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- job_name: &#x27;springboot_prometheus&#x27;</span><br><span class="line">  scrape_interval: 5s</span><br><span class="line">  metrics_path: &#x27;/actuator/prometheus&#x27;</span><br><span class="line">  static_configs:</span><br><span class="line">    - targets: [&#x27;127.0.0.1:8080&#x27;]</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>双击prometheus.exe运行,cheers! :beers:</li>
-<li>登录localhost:9090，进入Prometheus UI界面</li>
-</ul>
-<h4 id="配置Grafana"><a href="#配置Grafana" class="headerlink" title="配置Grafana"></a>配置Grafana</h4><ul>
-<li><a target="_blank" rel="noopener" href="https://grafana.com/grafana/download?pg=get&plcmt=selfmanaged-box1-cta1&platform=windows">在这里下载Windows版Grafana(Binaries版本)</a></li>
-<li>下载之后解压到你要存放的文件夹中</li>
-<li>运行bin目录下的grafana-server.exe</li>
-<li>在conf文件夹下复制sample.ini文件，重命名为custom.ini，将http_port行取消注释（ini文件中 ‘;’ 即为注释，我们将 ‘;’ 删掉），将端口号改为你想要的端口号</li>
-<li>进入localhost:${http_port}, 初始账户密码均为admin，登陆后按照指引修改密码</li>
-<li>配置数据源，我们选择Prometheus,将URL补全为localhost:9090，DashBoard中import<code>Prometheus 2.0 Stats</code> 和 <code>Grafana metrics</code>，点击<code>Save &amp; test</code>,即可配置成功（前提是已经打开了Prometheus)</li>
-<li>之后我们在DashBoard中即可看到图表</li>
-</ul>
-
+        
     </div>
 
     
@@ -254,7 +209,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://example.com/2022/09/04/Observability/" title="Observability搭建">http://example.com/2022/09/04/Observability/</a>
+    <a href="http://example.com/2022/09/14/Modern%20C++/" title="C++中">http://example.com/2022/09/14/Modern C++/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -336,7 +291,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Observability"><span class="nav-number">1.</span> <span class="nav-text">Observability</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEPrometheus"><span class="nav-number">1.0.1.</span> <span class="nav-text">配置Prometheus</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEGrafana"><span class="nav-number">1.0.2.</span> <span class="nav-text">配置Grafana</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -352,9 +306,15 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">日志</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
@@ -380,7 +340,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -162,6 +162,59 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/03/01/Modern%20C++/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="凰">
+      <meta itemprop="description" content="翱翔四海之外">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="丹穴">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/03/01/Modern%20C++/" class="post-title-link" itemprop="url">Modern C++中多态的实现方法(union,)</a>
+        </h2>
+
+        <div class="post-meta">
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>最近做服务器的项目的时候，在优化自己的架构的时候，抽象出了一个适配器层，服务器将借由这个适配器的抽象来到达上层的用户接受消息层。而适配器层所负责的就是建立连接，不管是tcp的epoll模式连接，还是rdma编程模式下的建立连接，我们都希望借助抽象出适配器的子类派生出来实现，在这样的结构下，一是对代码做到了很好的简化作用，二是可以做到以后更深层次的扩容，架构的可扩展性比较好，以后也可以接入如kafka这样的消息中间件做异步的消息转发，提高服务器的程序吞吐量，三也是方便我写测试代码。<br>    所以说这层抽象是很重要的。并且要实现这样的抽象类和派生类，我们就需要用到c++的多态。而我其实也是在学习modern C++的过程中了解到有variant。在这里我也写一下对这三种多态方式做出的研究吧。++有虚函数这个东西，实现 “virtual” 的机制是通过在类的虚函数表（vtable）中存储虚函数的地址，并在对象中添加一个指向虚函数表的指通常称为虚表指针）。</p>
+<p>在具体实现中，当一个类被定义为包含虚函数时，编译器会为该类创建一个虚函数表。虚函数表是一个存储虚函数指针的数组，每个虚函数对应一个指针，指向该函数的实现代码。在创建类的对象时，会为对象分配内存空间，并在对象的内存空间中添加一个虚表指针，指向该类的虚函数表。<br>当一个对象调用一个虚函数时，编译器会根据对象的类型和虚函数在虚函数表中的位置，找到对应的虚函数指针，然后调用该函数的实现代码。由于虚函数表是在编译期间创建的，因此可以在运行时根据对象的实际类型动态地调用相应的虚函数，实现多态性。因为希望做的是一个低延迟的交易系统，性能事实上是十分关键的因素。<br>举个简单的c++代码例子吧,这是一个底层的服务器，我可能希望子类重载这几个函数，</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>但是，这</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/14/Socketnetwork/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -214,55 +267,6 @@ NAT转换是什么呢？由于公网地址是有限的，为了节省公网ip资
 
 <h4 id="再到计算机网络"><a href="#再到计算机网络" class="headerlink" title="再到计算机网络"></a>再到计算机网络</h4><p>……待更</p>
 
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/14/Modern%20C++/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="凰">
-      <meta itemprop="description" content="翱翔四海之外">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="丹穴">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/09/14/Modern%20C++/" class="post-title-link" itemprop="url">C++中</a>
-        </h2>
-
-        <div class="post-meta">
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
       
     </div>
 
@@ -471,6 +475,56 @@ NAT转换是什么呢？由于公网地址是有限的，为了节省公网ip资
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/01/C++%E6%97%B6%E9%92%9F%E5%92%8C%E8%AE%A1%E6%97%B6%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="凰">
+      <meta itemprop="description" content="翱翔四海之外">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="丹穴">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/01/C++%E6%97%B6%E9%92%9F%E5%92%8C%E8%AE%A1%E6%97%B6%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">C++时钟和计时方法</a>
+        </h2>
+
+        <div class="post-meta">
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在测试时延的时候，由于</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/18/subscriber-publisher/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -587,14 +641,14 @@ NAT转换是什么呢？由于公网地址是有限的，为了节省公网ip资
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
